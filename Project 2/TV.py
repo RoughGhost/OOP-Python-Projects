@@ -47,3 +47,25 @@ class TV():
             self.channelIndex = self.nChannels - 1  # wrap around to the top channel
 
     def mute(self):
+        if not self.isOn:
+            return
+        self.isMuted = not self.isMuted
+
+    def setChannel(self, newChannel):
+        if newChannel in self.channelList:
+            self.channelIndex = self.channelList.index(newChannel)
+
+            # if the newChannel is not in our list of channel, don't do anything
+
+    def showInfo(self):
+        print()
+        print("Tv Status:")
+        if self.isOn:
+            print("Tv is: On")
+            print("Channel is:", self.channelList[self.channelIndex])
+            if self.isMuted:
+                print(f"Volume is: {self.volume} sound is muted")
+            else:
+                print(f"Volume is: {self.volume}")
+        else:
+            print("Tv is: Off")
